@@ -9,6 +9,8 @@
 		"@typescript-eslint/semi": [
 			"warn"
 		],
+		"@typescript-eslint/indent": "off",
+		"react/jsx-indent-props": "off",
 		"react/jsx-uses-react": "off",
 		"react/react-in-jsx-scope": "off",
 		"react/prop-types": 2,
@@ -18,7 +20,10 @@
 			{
 				"allowSingleExtends": true
 			}
-		]
+		],
+		"object-curly-newline": "off",
+		"import/prefer-default-export": "off",
+		"no-trailing-spaces": "off"
 	},
 	"extends": [
 		"next/core-web-vitals",
@@ -31,5 +36,8 @@
 	],
 	"parserOptions": {
 		"project": "./tsconfig.json"
-	}
+	},
+	"ignorePatterns": [
+		"next.config.js"
+	]
 }
