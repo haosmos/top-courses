@@ -10,6 +10,9 @@
 			"warn"
 		],
 		"@typescript-eslint/indent": "off",
+		"comma-dangle": "off",
+		"arrow-parens": "off",
+		"@typescript-eslint/comma-dangle": "off",
 		"react/jsx-indent-props": "off",
 		"react/jsx-uses-react": "off",
 		"react/react-in-jsx-scope": "off",
