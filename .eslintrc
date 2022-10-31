@@ -12,6 +12,7 @@
 		"@typescript-eslint/indent": "off",
 		"comma-dangle": "off",
 		"arrow-parens": "off",
+		"arrow-body-style": "off",
 		"@typescript-eslint/comma-dangle": "off",
 		"react/jsx-indent-props": "off",
 		"react/jsx-uses-react": "off",
