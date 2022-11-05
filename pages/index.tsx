@@ -5,6 +5,11 @@ import { Htag, Button, P, Tag, Rating } from '../components';
 import { withLayout } from '../layout/Layout';
 import { MenuItem } from '../interfaces/menu.interface';
 
+interface HomeProps extends Record<string, unknown> {
+  menu: MenuItem[],
+  firstCategory: number;
+}
+
 function Home({ menu }: HomeProps): JSX.Element {
   const [rating, setRating] = useState<number>(4);
   
@@ -34,11 +39,6 @@ function Home({ menu }: HomeProps): JSX.Element {
 }
 
 export default withLayout(Home);
-
-interface HomeProps extends Record<string, unknown> {
-  menu: MenuItem[],
-  firstCategory: number;
-}
 
 export const getStaticProps: GetStaticProps<HomeProps> = async () => {
   const firstCategory = 0;

@@ -19,7 +19,7 @@ class MyDocument extends Document {
     return (
       <Html lang="ru">
         <Head>
-          {/* <title>Top courses</title> */}
+          {/* <title>Top [type]</title> */}
           {/* <link rel="icon" href="/favicon.ico" /> */}
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link
