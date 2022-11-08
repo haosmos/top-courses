@@ -1,9 +1,9 @@
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from 'next';
 import axios from 'axios';
+import { ParsedUrlQuery } from 'querystring';
 import { MenuItem } from '../../interfaces/menu.interface';
 import { withLayout } from '../../layout/Layout';
 import { firstLevelMenu } from '../../helpers/helpers';
-import { ParsedUrlQuery } from 'querystring';
 
 interface TypeProps extends Record<string, unknown> {
   menu: MenuItem[],
