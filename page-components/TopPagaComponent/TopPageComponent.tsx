@@ -1,6 +1,6 @@
 import cn from 'classnames';
 import { TopPageComponentProps } from './TopPageComponent.props';
-import { Htag, Tag, Card, HhData } from '../../components';
+import { Htag, Tag, Card, HhData, Advantages, P } from '../../components';
 import styles from './TopPageComponent.module.css';
 import { TopLevelCategory } from '../../interfaces/page.interface';
 
@@ -29,7 +29,17 @@ export function TopPageComponent({
         <Htag tag="h2">Вакансии - {page.category}</Htag>
         {products && <Tag color="red" size="m">hh.ru</Tag>}
       </div>
-      {firstCategory === TopLevelCategory.Courses && <HhData {...page.hh} />}
+      {firstCategory === TopLevelCategory.Courses && page.hh
+       && <HhData {...page.hh} />}
+      {page.advantages && page.advantages.length > 0 && (
+        <>
+          <Htag tag="h2">Преимущества</Htag>
+          <Advantages advantages={page.advantages} />
+        </>
+      )}
+      {page.seoText && <P>{page.seoText}</P>}
+      <Htag tag="h2">Получаемые навыки</Htag>
+      {page.tags.map(t => <Tag key={t} color="primary">{t}</Tag>)}
     </div>
   );
 }
