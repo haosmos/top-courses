@@ -1,8 +1,10 @@
-import cn from 'classnames';
+import { useReducer } from 'react';
 import { TopPageComponentProps } from './TopPageComponent.props';
-import { Htag, Tag, Card, HhData, Advantages, P } from '../../components';
+import { Advantages, HhData, Htag, Sort, Tag, Product } from '../../components';
 import styles from './TopPageComponent.module.css';
 import { TopLevelCategory } from '../../interfaces/page.interface';
+import { SortEnum } from '../../components/Sort/Sort.props';
+import { sortReducer } from './sort.reducer';
 
 // eslint-disable-next-line import/no-duplicates
 
@@ -11,17 +13,29 @@ export function TopPageComponent({
   products,
   firstCategory
 }: TopPageComponentProps): JSX.Element {
+  const [{ products: sortedProducts, sort }, dispatchSort] = useReducer(
+    sortReducer,
+    {
+      products,
+      sort: SortEnum.Rating
+    }
+  );
+  
+  const setSort = (sort: sortEnum) => {
+    dispatchSort({ type: sort });
+  };
+  
   return (
     <div className={styles.wrapper}>
       <div className={styles.title}>
         <Htag tag="h1">{page.title}</Htag>
         {products && <Tag color="grey" size="m">{products.length}</Tag>}
-        <span>Сортировка</span>
+        <Sort sort={sort} setSort={setSort} />
       </div>
       
       <div>
-        {products && products.map(p => (
-          <div key={p._id}>{p.title}</div>
+        {sortedProducts && sortedProducts.map(p => (
+          <Product key={p._id} product={p} />
         ))}
       </div>
       
@@ -37,7 +51,13 @@ export function TopPageComponent({
           <Advantages advantages={page.advantages} />
         </>
       )}
-      {page.seoText && <P>{page.seoText}</P>}
+      {page.seoText && (
+        <div
+          className={styles.seo}
+          dangerouslySetInnerHTML={{ __html: page.seoText }}
+        >
+        </div>
+      )}
       <Htag tag="h2">Получаемые навыки</Htag>
       {page.tags.map(t => <Tag key={t} color="primary">{t}</Tag>)}
     </div>
