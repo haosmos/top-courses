@@ -23,11 +23,12 @@ function Home({ menu }: HomeProps): JSX.Element {
         I am the ghost button!
       </Button>
       <P size="l">Большой текст</P>
+      <P size="l">Большой текст</P>
       <P size="m">Средний текст</P>
-      <P size="s">Маленький текст</P>
+      <Tag size="s">Ghost</Tag>
+      <P size="s">Маленький текст ggggg</P>
       <P size="l">Some text</P>
       <P>Дефолтный текст!!!</P>
-      <Tag size="s">Ghost</Tag>
       <Tag size="m" color="green">Green</Tag>
       <Tag size="s" color="red">Red</Tag>
       <Tag size="s" color="primary">Ghost</Tag>
