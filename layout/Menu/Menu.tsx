@@ -80,8 +80,7 @@ export function Menu(): JSX.Element {
         <Link href={`/${route}/${p.alias}`}>
           <a
             className={cn(styles.thirdLevel, {
-              [styles.thirdLevelActive]: `/${route}/${p.alias}`
-                                         === router.asPath
+              [styles.thirdLevelActive]: `/${route}/${p.alias}` === router.asPath
             })}
           >
             {p.category}

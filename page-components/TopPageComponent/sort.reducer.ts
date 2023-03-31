@@ -5,7 +5,7 @@ export type SortActions = { type: SortEnum.Price } | { type: SortEnum.Rating };
 
 export interface SortReducerState {
   sort: SortEnum,
-  product: ProductModel[];
+  products: ProductModel[];
 }
 
 export const sortReducer = (

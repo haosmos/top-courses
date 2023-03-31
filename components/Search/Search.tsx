@@ -30,7 +30,7 @@ export function Search({
   };
   
   return (
-    <div className={cn(className, styles.search)} {...props}>
+    <form className={cn(className, styles.search)} {...props}>
       <Input
         className={styles.input}
         placeholder="Поиск..."
@@ -46,6 +46,6 @@ export function Search({
       >
         <GlassIcon />
       </Button>
-    </div>
+    </form>
   );
 }

@@ -10,6 +10,8 @@
 			"warn"
 		],
 		"@typescript-eslint/indent": "off",
+		"no-shadow": "off",
+		"@typescript-eslint/no-shadow": "off",
 		"comma-dangle": "off",
 		"arrow-parens": "off",
 		"arrow-body-style": "off",

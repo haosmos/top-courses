@@ -20,7 +20,7 @@ export interface HhData {
   updatedAt: Date;
 }
 
-export interface TopPageModel {
+export interface CourseModel {
   tags: string[];
   _id: string;
   secondCategory: string;

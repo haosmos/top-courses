@@ -1,11 +1,11 @@
 import {
   TopLevelCategory,
-  TopPageModel
+  CourseModel
 } from '../../interfaces/page.interface';
 import { ProductModel } from '../../interfaces/product.interface';
 
 export interface TopPageComponentProps {
   firstCategory: TopLevelCategory;
-  page: TopPageModel;
+  page: CourseModel;
   products: ProductModel[];
 }

@@ -1,1 +1,1 @@
-export * from './TopPagaComponent/TopPageComponent';
+export * from './TopPageComponent/TopPageComponent';

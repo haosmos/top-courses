@@ -1,5 +1,5 @@
 import { useReducer } from 'react';
-import { TopPageComponentProps } from './TopPageComponent.props';
+import { TopPageComponentProps } from './TopPageComponentProps';
 import { Advantages, HhData, Htag, Sort, Tag, Product } from '../../components';
 import styles from './TopPageComponent.module.css';
 import { TopLevelCategory } from '../../interfaces/page.interface';
@@ -21,7 +21,7 @@ export function TopPageComponent({
     }
   );
   
-  const setSort = (sort: sortEnum) => {
+  const setSort = (sort) => {
     dispatchSort({ type: sort });
   };
   
