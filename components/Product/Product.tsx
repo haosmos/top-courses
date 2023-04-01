@@ -1,82 +1,6 @@
-// import cn from 'classnames';
-// import React from 'react';
-// import { ProductProps } from './Product.props';
-// import styles from './Product.module.css';
-// import { Card } from '../Card/Card';
-// import { Rating } from '../Rating/Rating';
-// import { Tag } from '../Tag/Tag';
-// import { Htag } from '../Htag/Htag';
-// import { Button } from '../Button/Button';
-// import { Divider } from '../Divider/Divider';
-//
-// export function Product({
-//   product,
-//   className,
-//   ...props
-// }: ProductProps): JSX.Element {
-//   return (
-//     <Card className={styles.product}>
-//       <div className={styles.logo}>
-//         <img src={process.env.NEXT_PUBLIC_DOMAIN + product.image}
-// alt={product.title} /> </div> <div className={styles.title}> <Htag
-// tag="h4">{product.title}</Htag> </div> <div
-// className={styles.price}>{product.price}</div> <div
-// className={styles.credit}>{product.credit}</div> <div className={styles.rating}>
-// <Rating rating={product.reviewAvg ?? product.initialRating} /> </div> <div
-// className={styles.tags}> {product.categories.map(c => <Tag key={c}
-// color="ghost">{c}</Tag>)} </div> <div className={styles.priceTitle}>цена</div> <div
-// className={styles.creditTitle}>кредит</div> <div
-// className={styles.rateTitle}>{product.reviewCount} отзывов</div> <Divider
-// className={styles.hr} /> <div
-// className={styles.description}>{product.description}</div> <div
-// className={styles.feature}>feature</div> <div className={styles.advBlock}> <div
-// className={styles.advantages}> <div> преимущества </div> <div> {product.advantages}
-// </div> </div> <div className={styles.disadvantages}> <div> недостатки </div> <div>
-// {product.disadvantages} </div> </div> <Divider className={styles.hr} /> <div
-// className={styles.actions}> <Button appearance="primary"> Узнать подробности
-// </Button> <Button appearance="ghost" arrow="right"> Читать отзывы </Button> </div>
-// </div> </Card> ); }
-
-// import { Card } from '../Card/Card';
-// import { Rating } from '../Rating/Rating';
-// import { Tag } from '../Tag/Tag';
-// import { Htag } from '../Htag/Htag';
-// import { Button } from '../Button/Button';
-// import { Divider } from '../Divider/Divider';
-//
-// export function Product({
-//   product,
-//   className,
-//   ...props
-// }: ProductProps): JSX.Element {
-//   return (
-//     <Card className={styles.product}>
-//       <div className={styles.logo}>
-//         <img src={process.env.NEXT_PUBLIC_DOMAIN + product.image}
-// alt={product.title} /> </div> <div className={styles.title}> <Htag
-// tag="h4">{product.title}</Htag> </div> <div
-// className={styles.price}>{product.price}</div> <div
-// className={styles.credit}>{product.credit}</div> <div className={styles.rating}>
-// <Rating rating={product.reviewAvg ?? product.initialRating} /> </div> <div
-// className={styles.tags}> {product.categories.map(c => <Tag key={c}
-// color="ghost">{c}</Tag>)} </div> <div className={styles.priceTitle}>цена</div> <div
-// className={styles.creditTitle}>кредит</div> <div
-// className={styles.rateTitle}>{product.reviewCount} отзывов</div> <Divider
-// className={styles.hr} /> <div
-// className={styles.description}>{product.description}</div> <div
-// className={styles.feature}>feature</div> <div className={styles.advBlock}> <div
-// className={styles.advantages}> <div> преимущества </div> <div> {product.advantages}
-// </div> </div> <div className={styles.disadvantages}> <div> недостатки </div> <div>
-// {product.disadvantages} </div> </div> <Divider className={styles.hr} /> <div
-// className={styles.actions}> <Button appearance="primary"> Узнать подробности
-// </Button> <Button appearance="ghost" arrow="right"> Читать отзывы </Button> </div>
-// </div> </Card> ); }
-
-import { ForwardedRef, forwardRef, useRef, useState } from 'react';
-// import Image from 'next/image';
 import cn from 'classnames';
 import Image from 'next/image';
-
+import { useState } from 'react';
 import { ProductProps } from './Product.props';
 import styles from './Product.module.css';
 import { Card } from '../Card/Card';
@@ -85,12 +9,16 @@ import { Tag } from '../Tag/Tag';
 import { Button } from '../Button/Button';
 import { declOfNum, priceRu } from '../../helpers/helpers';
 import { Divider } from '../Divider/Divider';
+import { Review } from '../Review/Review';
+import { ReviewForm } from '../ReviewForm/ReviewForm';
 
 export function Product({
   product,
   className,
   ...props
 }: ProductProps): JSX.Element {
+  const [isReviewOpened, setIsReviewOpened] = useState<boolean>(false);
+  
   return (
     <div className={className} {...props}>
       <Card className={styles.product}>
@@ -178,8 +106,30 @@ export function Product({
         <Divider className={cn(styles.hr, styles.hr2)} />
         <div className={styles.actions}>
           <Button appearance="primary">Узнать подробнее</Button>
-          <Button appearance="ghost">Читать отзывы</Button>
+          <Button
+            appearance="ghost"
+            arrow={isReviewOpened ? 'down' : 'right'}
+            className={styles.reviewButton}
+            onClick={() => setIsReviewOpened(true)}
+          >
+            Читать отзывы
+          </Button>
         </div>
+      </Card>
+      <Card
+        color="blue"
+        className={cn(styles.review, {
+          [styles.opened]: setIsReviewOpened,
+          [styles.opened]: !setIsReviewOpened,
+        })}
+      >
+        {product.reviews.map((r) => (
+          <div key={r._id}>
+            <Review review={r} />
+            <Divider />
+          </div>
+        ))}
+        <ReviewForm productId={product._id} isOpened={isReviewOpened} />
       </Card>
     </div>
   );

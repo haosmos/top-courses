@@ -33,6 +33,7 @@
 	},
 	"extends": [
 		"next/core-web-vitals",
+		"next",
 		"eslint:recommended",
 		"plugin:@typescript-eslint/eslint-recommended",
 		"plugin:@typescript-eslint/recommended",
@@ -40,6 +41,11 @@
 		"airbnb",
 		"airbnb-typescript"
 	],
+	"settings": {
+		"next": {
+			"rootDir": "top-courses/"
+		}
+	},
 	"parserOptions": {
 		"project": "./tsconfig.json"
 	},

@@ -12,9 +12,9 @@ interface TypeProps extends Record<string, unknown> {
 
 function Type({ firstCategory }: TypeProps): JSX.Element {
   return (
-    <>
-      <h1>Type: {firstCategory}</h1>
-    </>
+    <h1>
+      Type:{firstCategory}
+    </h1>
   );
 }
 
