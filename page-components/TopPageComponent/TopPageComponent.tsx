@@ -1,3 +1,4 @@
+import { useReducedMotion } from 'framer-motion';
 import { useEffect, useReducer } from 'react';
 import { Advantages, Htag, P, Product, Sort, Tag, HhData } from '../../components';
 import { TopPageComponentProps } from './TopPageComponentProps';
@@ -5,14 +6,12 @@ import styles from './TopPageComponent.module.css';
 import { TopLevelCategory } from '../../interfaces/page.interface';
 import { SortEnum } from '../../components/Sort/Sort.props';
 import { sortReducer } from './sort.reducer';
-import { useReducedMotion } from 'framer-motion';
 
 export function TopPageComponent({
     page,
     products,
     firstCategory
-  }: TopPageComponentProps
-): JSX.Element {
+  }: TopPageComponentProps): JSX.Element {
   const [
     {
       products: sortedProducts,

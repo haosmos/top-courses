@@ -10,9 +10,7 @@ interface HomeProps extends Record<string, unknown> {
 
 function Search(): JSX.Element {
   return (
-    <>
-      <h1>Search</h1>
-    </>
+    <h1>Search</h1>
   );
 }
 
