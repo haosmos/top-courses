@@ -1,5 +1,6 @@
 import { GetStaticProps } from 'next';
 import axios from 'axios';
+import { useRouter } from 'next/router';
 import { withLayout } from '../layout/Layout';
 import { MenuItem } from '../interfaces/menu.interface';
 
@@ -9,8 +10,13 @@ interface HomeProps extends Record<string, unknown> {
 }
 
 function Search(): JSX.Element {
+  const router = useRouter();
+  
   return (
-    <h1>Search</h1>
+    <>
+      <h1>Search</h1>
+      <h3>{JSON.stringify(router)}</h3>
+    </>
   );
 }
 

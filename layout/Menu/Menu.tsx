@@ -28,7 +28,8 @@ export function Menu(): JSX.Element {
   const variantsChildren = {
     visible: {
       opacity: 1,
-      height: 29
+      height: 30,
+      // overflowWrap: 'break-wrap',
     },
     hidden: { opacity: shouldReduceMotion ? 1 : 0, height: 0 }
   };
@@ -117,11 +118,14 @@ export function Menu(): JSX.Element {
             href={`/${route}/${p.alias}`}
             tabIndex={isOpened ? 0 : -1}
             className={cn(styles.thirdLevel, {
-              [styles.thirdLevelActive]: `/${route}/${p.alias}` === router.asPath
+              [styles.thirdLevelActive]: `/${route}/${p.alias}` === router.asPath,
+              // [styles.secondLevelActive]: `/${route}/${p.alias}` === router.asPath
             })}
             aria-current={`/${route}/${p.alias}` === router.asPath ? 'page' : false}
           >
-            {p.category}
+            {/* {console.log(`/${route}/${p.alias}` === router.asPath)} */}
+            {p.category.length >= 25 ? `${p.category.slice(0, 21)}...` : p.category}
+            
           </Link>
         </motion.li>
       ))

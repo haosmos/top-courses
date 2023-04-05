@@ -2,8 +2,8 @@ import cn from 'classnames';
 import Image from 'next/image';
 import { ForwardedRef, forwardRef, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { ProductProps } from './Product.props';
 import styles from './Product.module.css';
+import { ProductProps } from './Product.props';
 import { Card } from '../Card/Card';
 import { Rating } from '../Rating/Rating';
 import { Tag } from '../Tag/Tag';
@@ -17,9 +17,12 @@ export const Product = motion(
   forwardRef(({
     product, className, ...props
   }: ProductProps, ref: ForwardedRef<HTMLDivElement>): JSX.Element => {
-    const [isReviewOpened, setIsReviewOpened] = useState<boolean>(false);
-    const reviewRef = useRef<HTMLDivElement>(null);
+    const [
+      isReviewOpened,
+      setIsReviewOpened
+    ] = useState<boolean>(false);
     
+    const reviewRef = useRef<HTMLDivElement>(null);
     const variants = {
       visible: { opacity: 1, height: 'auto' },
       hidden: { opacity: 0, height: 0 }
