@@ -6,6 +6,7 @@ import { withLayout } from '../../layout/Layout';
 import { firstLevelMenu } from '../../helpers/helpers';
 
 interface TypeProps extends Record<string, unknown> {
+  // eslint-disable-next-line react/no-unused-prop-types
   menu: MenuItem[],
   firstCategory: number;
 }
@@ -13,7 +14,7 @@ interface TypeProps extends Record<string, unknown> {
 function Type({ firstCategory }: TypeProps): JSX.Element {
   return (
     <h1>
-      Type:{firstCategory}
+      На этой странице будет описание курсов
     </h1>
   );
 }

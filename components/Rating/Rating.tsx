@@ -15,10 +15,12 @@ export const Rating = forwardRef(
   ({
     isEditable = false, error, rating, setRating, tabIndex, ...props
   }: RatingProps, ref: ForwardedRef<HTMLDivElement>): JSX.Element => {
+    // eslint-disable-next-line react/jsx-no-useless-fragment
     const [ratingArray, setRatingArray] = useState<JSX.Element[]>(new Array(5).fill(<></>));
     const ratingArrayRef = useRef<(HTMLSpanElement | null)[]>([]);
     
     useEffect(() => {
+      // eslint-disable-next-line @typescript-eslint/no-use-before-define
       constructRating(rating);
     }, [rating, tabIndex]);
     
@@ -38,6 +40,7 @@ export const Rating = forwardRef(
     const constructRating = (currentRating: number) => {
       const updatedArray = ratingArray.map((r: JSX.Element, i: number) => {
         return (
+          // eslint-disable-next-line jsx-a11y/no-static-element-interactions
           <span
             className={cn(styles.star, {
               [styles.filled]: i < currentRating,
@@ -109,6 +112,7 @@ export const Rating = forwardRef(
         })}
       >
         {ratingArray.map((r, i) => (
+          // eslint-disable-next-line react/no-array-index-key
           <span key={i}>{r}</span>
         ))}
         {error && (

@@ -10,22 +10,31 @@ import { ProductModel } from '../../interfaces/product.interface';
 import { firstLevelMenu } from '../../helpers/helpers';
 import { TopPageComponent } from '../../page-components';
 import { API } from '../../helpers/api';
+import { Error404 } from '../404';
 
 // import { Error404 } from '../404';
 
+interface TopPageProps extends Record<string, unknown> {
+  // eslint-disable-next-line react/no-unused-prop-types
+  menu: MenuItem[];
+  firstCategory: TopLevelCategory;
+  page: CourseModel;
+  products: ProductModel[];
+}
+
 function TopPage({ firstCategory, page, products }: TopPageProps): JSX.Element {
-  // if (!page || !products) {
-  //   return <Error404 />;
-  // }
+  if (!page || !products) {
+    return <Error404 />;
+  }
   
   return (
     <>
       <Head>
         <title>{page.metaTitle}</title>
         <meta name="description" content={page.metaDescription} />
-        <meta property="og:title" content={page.metaTitle} />
-        <meta property="og:description" content={page.metaDescription} />
-        <meta property="og:type" content="article" />
+        {/* <meta property="og:title" content={page.metaTitle} /> */}
+        {/* <meta property="og:description" content={page.metaDescription} /> */}
+        {/* <meta property="og:type" content="article" /> */}
       </Head>
       <TopPageComponent
         firstCategory={firstCategory}
@@ -41,7 +50,9 @@ export default withLayout(TopPage);
 export const getStaticPaths: GetStaticPaths = async () => {
   let paths: string[] = [];
   
+  // eslint-disable-next-line no-restricted-syntax
   for (const m of firstLevelMenu) {
+    // eslint-disable-next-line no-await-in-loop
     const { data: menu } = await axios.post<MenuItem[]>(API.topPage.find, {
       firstCategory: m.id
     });
@@ -61,12 +72,14 @@ export const getStaticProps: GetStaticProps<TopPageProps> = async (
       notFound: true
     };
   }
+  
   const firstCategoryItem = firstLevelMenu.find(m => m.route === params.type);
   if (!firstCategoryItem) {
     return {
       notFound: true
     };
   }
+  
   try {
     const { data: menu } = await axios.post<MenuItem[]>(API.topPage.find, {
       firstCategory: firstCategoryItem.id
@@ -76,6 +89,7 @@ export const getStaticProps: GetStaticProps<TopPageProps> = async (
         notFound: true
       };
     }
+    
     const {
       data: page
     } = await axios.get<CourseModel>(API.topPage.byAlias + params.alias);
@@ -104,10 +118,3 @@ export const getStaticProps: GetStaticProps<TopPageProps> = async (
     };
   }
 };
-
-interface TopPageProps extends Record<string, unknown> {
-  menu: MenuItem[];
-  firstCategory: TopLevelCategory;
-  page: CourseModel;
-  products: ProductModel[];
-}

@@ -29,6 +29,7 @@ export function Menu(): JSX.Element {
     visible: {
       opacity: 1,
       height: 30,
+      color: 'red'
       // overflowWrap: 'break-wrap',
     },
     hidden: { opacity: shouldReduceMotion ? 1 : 0, height: 0 }
@@ -114,18 +115,16 @@ export function Menu(): JSX.Element {
     return (
       pages.map(p => (
         <motion.li key={p._id} variants={variantsChildren}>
-          <Link
-            href={`/${route}/${p.alias}`}
-            tabIndex={isOpened ? 0 : -1}
-            className={cn(styles.thirdLevel, {
-              [styles.thirdLevelActive]: `/${route}/${p.alias}` === router.asPath,
-              // [styles.secondLevelActive]: `/${route}/${p.alias}` === router.asPath
-            })}
-            aria-current={`/${route}/${p.alias}` === router.asPath ? 'page' : false}
-          >
-            {/* {console.log(`/${route}/${p.alias}` === router.asPath)} */}
-            {p.category.length >= 25 ? `${p.category.slice(0, 21)}...` : p.category}
-            
+          <Link href={`/${route}/${p.alias}`}>
+            <a
+              tabIndex={isOpened ? 0 : -1}
+              className={cn(styles.thirdLevel, {
+                [styles.thirdLevelActive]: `/${route}/${p.alias}` === router.asPath
+              })}
+              aria-current={`/${route}/${p.alias}` === router.asPath ? 'page' : false}
+            >
+              {p.category.length >= 25 ? `${p.category.slice(0, 19)}...` : p.category}
+            </a>
           </Link>
         </motion.li>
       ))

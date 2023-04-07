@@ -7,6 +7,7 @@ import { MenuItem } from '../interfaces/menu.interface';
 
 interface HomeProps extends Record<string, unknown> {
   menu: MenuItem[],
+  // eslint-disable-next-line react/no-unused-prop-types
   firstCategory: number;
 }
 
