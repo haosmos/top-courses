@@ -112,17 +112,16 @@ export const Rating = forwardRef(
         })}
       >
         {ratingArray.map((r, i) => (
-          // eslint-disable-next-line react/no-array-index-key
           <span key={i}>{r}</span>
         ))}
         {error && (
-          <span
+        <span
             role="alert"
             className={styles.errorMessage}
-          >
-            {error.message}
-          </span>
-        )}
+        >
+          {error.message}
+        </span>
+)}
       </div>
     );
   }
