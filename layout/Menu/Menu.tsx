@@ -17,9 +17,16 @@ export function Menu(): JSX.Element {
   const variants = {
     visible: {
       marginBottom: 20,
-      transition: shouldReduceMotion ? {} : {
+      // transition: shouldReduceMotion ? {} : {
+      //   when: 'beforeChildren',
+      //   staggerChildren: 0.1,
+      //   duration: 0.3
+      // }
+      
+      transition: {
         when: 'beforeChildren',
-        staggerChildren: 0.1
+        staggerChildren: 0.1,
+        duration: 0.3
       }
     },
     hidden: { marginBottom: 0 }
@@ -29,9 +36,10 @@ export function Menu(): JSX.Element {
     visible: {
       opacity: 1,
       height: 30,
-      color: 'red'
+      // transition: { duration: 3.5 }
       // overflowWrap: 'break-wrap',
     },
+    transition: { duration: 0.3 },
     hidden: { opacity: shouldReduceMotion ? 1 : 0, height: 0 }
   };
   

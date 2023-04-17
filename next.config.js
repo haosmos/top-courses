@@ -1,6 +1,20 @@
 module.exports = {
   images: {
-    domains: ['courses-top.ru']
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'courses-top.ru',
+        port: '',
+        pathname: '/**',
+      }
+    ]
+    // domains: ['courses-top.ru', 'images.unsplash.com'],
   },
   eslint: {
     ignoreDuringBuilds: true,

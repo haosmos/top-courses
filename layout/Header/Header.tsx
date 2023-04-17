@@ -1,4 +1,6 @@
 import { useRouter } from 'next/router';
+import Link from 'next/link';
+
 import { useEffect, useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import cn from 'classnames';
@@ -33,7 +35,9 @@ export function Header({ className, ...props }: HeaderProps): JSX.Element {
   
   return (
     <header className={cn(className, styles.header)} {...props}>
-      <Logo />
+      <Link href="/">
+        <Logo />
+      </Link>
       <ButtonIcon appearance="white" icon="menu" onClick={() => setIsOpened(true)} />
       <motion.div
         className={styles.mobileMenu}
