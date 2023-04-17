@@ -57,6 +57,8 @@ function Home({ menu }: HomeProps): JSX.Element {
             // layout="fill"
             width={700}
             height={500}
+            sizes="100vw"
+            
         />
         <div className={styles.blockDetails}>
           <h2 className={styles.hadding}>Решитесь на большее</h2>
