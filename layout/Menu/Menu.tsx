@@ -39,7 +39,7 @@ export function Menu(): JSX.Element {
       // transition: { duration: 3.5 }
       // overflowWrap: 'break-wrap',
     },
-    transition: { duration: 0.3 },
+    // transition: { duration: 0.3 },
     hidden: { opacity: shouldReduceMotion ? 1 : 0, height: 0 }
   };
   
